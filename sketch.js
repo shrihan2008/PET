@@ -1,5 +1,5 @@
 //Create variables here
-var foodstock
+var foodS
 
 function preload()
 {
@@ -10,12 +10,12 @@ function preload()
 
 function setup() {
   database = firebase.database();
-	createCanvas(800, 700);
+	createCanvas(800,800);
   foodstock=database.ref('Food')
   
   foodstock.on("value",readStock)
-  dog2=createSprite(100,200,30,40)
-  dog2.addImage=(dog)
+  dog2=createSprite(400,400,30,40)
+  dog2.addImage(dog);
   
   //dog3=createSprite(200,100,30,40)
   //dog3.addImage=(dog1)
@@ -23,26 +23,40 @@ function setup() {
 
 
 function draw() {  
-  background(46,139,87)
+  background(0,0,83)
+  
   drawSprites();
   //add styles here
 
   if(keyWentDown(UP_ARROW)){
     writeStock(foodS)
-    dog.addImage=(dog_happy)
-    foodS=foodS-1
+    dog2.addImage(dog_happy);
   }
+  textColor=("Yellow")
+  text("Food="+""+foodS,400,100)
+  textSize(6);
+ // fill(color(100,255,255));
 }
+
 function readStock(data){
-  foodS=data.val()
- 
-  }
+  foodS=data.val();
+}
 
 
 function writeStock(x){
+
+  if(x<=0)
+  {
+    x=0;
+  }
+  else
+  {
+    x=x-1;
+  }
   database.ref('/').update({
     Food:x
-  })
+  }
+  )
  
   }
 
