@@ -16,6 +16,7 @@ function setup() {
   foodstock.on("value",readStock)
   dog2=createSprite(400,400,30,40)
   dog2.addImage(dog);
+  dog.resize(100,100)
   
   //dog3=createSprite(200,100,30,40)
   //dog3.addImage=(dog1)
@@ -31,8 +32,9 @@ function draw() {
   if(keyWentDown(UP_ARROW)){
     writeStock(foodS)
     dog2.addImage(dog_happy);
+    dog_happy.resize(100,100)
   }
-  textColor=("Yellow")
+  textColor=("yellow")
   text("Food="+""+foodS,400,100)
   textSize(6);
  // fill(color(100,255,255));
